@@ -1,0 +1,9 @@
+#!/bin/bash
+chmod a+rw -R /etc/gitlab-runner/
+
+if [ "$DISABLE_DOCKER" != "true" ]; then
+  service docker start
+fi
+
+echo "exec su -s /bin/bash -c \"$*\" gitlab-runner"
+exec su -s /bin/bash -c "cd; $*" gitlab-runner

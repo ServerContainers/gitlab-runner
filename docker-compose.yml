@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+
+  gitlab-runner:
+    build: .
+    image: 'servercontainers/gitlab-runner'
+    privileged: true
+    restart: always
+    volumes:
+      - './config:/etc/gitlab-runner'
